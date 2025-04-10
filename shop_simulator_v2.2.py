@@ -1,3 +1,5 @@
+# Shop-simulator v2.2
+
 class Product:
     def __init__(self, name, category, price, weight, description=""):
         self.name = name
@@ -7,11 +9,10 @@ class Product:
         self.description = description
 
     def __str__(self):
-        return f"{self.name} ({self.category}): ${self.price}, {self.weight}g\n{self.description}"
+        return f"{self.name} ({self.category}): P.{self.price}, {self.weight}г\n{self.description}"
 
     def __repr__(self):
         return f"Product('{self.name}', '{self.category}', {self.price}, {self.weight})"
-
 
 class Catalog:
     def __init__(self):
@@ -35,7 +36,6 @@ class Catalog:
         for product in self.products:
             print(product)
             print("-" * 40)
-
 
 class Cart:
     def __init__(self):
@@ -75,12 +75,11 @@ class Cart:
         for i, item in enumerate(self.items, 1):
             product = item['product']
             print(f"{i}. {product.name} ({product.category})")
-            print(f"   Цена: ${product.price} x {item['quantity']} = ${product.price * item['quantity']}")
-            print(f"   Вес: {product.weight}g x {item['quantity']} = {product.weight * item['quantity']}g")
+            print(f"   Цена: P.{product.price} x {item['quantity']} = P.{product.price * item['quantity']}")
+            print(f"   Вес: {product.weight}г x {item['quantity']} = {product.weight * item['quantity']}г")
             print("-" * 40)
 
-        print(f"Итого: ${self.total_cost()}, Общий вес: {self.total_weight()}g")
-
+        print(f"Итого: P.{self.total_cost()}, Общий вес: {self.total_weight()}г")
 
 class SortAlgorithms:
     @staticmethod
@@ -172,7 +171,6 @@ class SortAlgorithms:
         result.extend(right[j:])
         return result
 
-
 class ShopInterface:
     def __init__(self):
         self.catalog = Catalog()
@@ -182,14 +180,14 @@ class ShopInterface:
     def _initialize_catalog(self):
         # Добавляем тестовые товары
         products = [
-            Product("Ноутбук", "Электроника", 999.99, 1500, "Мощный ноутбук для работы и игр"),
-            Product("Смартфон", "Электроника", 699.99, 200, "Флагманский смартфон"),
-            Product("Наушники", "Электроника", 199.99, 300, "Беспроводные наушники"),
-            Product("Книга", "Книги", 19.99, 500, "Бестселлер этого года"),
-            Product("Футболка", "Одежда", 29.99, 200, "Хлопковая футболка"),
-            Product("Кофе", "Продукты", 9.99, 250, "Арабика 100%"),
-            Product("Чай", "Продукты", 7.99, 100, "Зеленый чай"),
-            Product("Мышь", "Электроника", 49.99, 100, "Беспроводная мышь")
+            Product("Ноутбук", "Электроника", 99999.99, 1500, "Мощный ноутбук для работы и игр"),
+            Product("Смартфон", "Электроника", 79699.99, 200, "Флагманский смартфон"),
+            Product("Наушники", "Электроника", 19199.99, 300, "Беспроводные наушники"),
+            Product("Книга", "Книги", 599.99, 500, "Бестселлер этого года"),
+            Product("Футболка", "Одежда", 5999.99, 200, "Хлопковая футболка"),
+            Product("Кофе", "Продукты", 699.99, 250, "Арабика 100%"),
+            Product("Чай", "Продукты", 299.99, 100, "Зеленый чай"),
+            Product("Мышь", "Электроника", 999.99, 100, "Беспроводная мышь")
         ]
 
         for product in products:
@@ -197,7 +195,7 @@ class ShopInterface:
 
     def run(self):
         while True:
-            print("\n=== ВИРТУАЛЬНЫЙ МАГАЗИН ===")
+            print("\n*** ВИРТУАЛЬНЫЙ МАГАЗИН ***")
             print("1. Просмотреть каталог")
             print("2. Добавить товар в корзину")
             print("3. Удалить товар из корзины")
@@ -313,7 +311,6 @@ class ShopInterface:
             self._show_cart()
         else:
             print("Неверный выбор алгоритма")
-
 
 if __name__ == "__main__":
     shop = ShopInterface()
